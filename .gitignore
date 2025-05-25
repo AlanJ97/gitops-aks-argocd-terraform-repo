@@ -55,3 +55,4 @@ infracost-reports.outputs/
 # For example, if you use tfenv:
 # .terraform-version
 # .tfenv-version
+tfplan
