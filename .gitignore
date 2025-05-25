@@ -1,0 +1,57 @@
+# Terraform Core Files
+# These files are sensitive or local build artifacts and should not be committed.
+.terraform/
+*.tfstate
+*.tfstate.*.backup
+crash.log
+crash.*.log # Catches specific crash log files like crash.2021-09-01T10_30_00.log
+
+# Terraform Variables
+# These files often contain sensitive information (credentials, secrets, etc.).
+# It's a common practice to manage *.tfvars files outside of version control
+# (e.g., using a secrets manager, environment variables, or a secure vault).
+# If you have non-sensitive default variables in a specific file (e.g., terraform.tfvars.example),
+# you can explicitly un-ignore it using !terraform.tfvars.example.
+*.tfvars
+*.tfvars.json
+
+# Terraform Plan Files
+# Plan files can contain sensitive information about your infrastructure
+# and desired state. They can also be large.
+# It's better to generate them on demand in CI/CD pipelines or locally as needed.
+*.tfplan
+
+# Terraform Override Files
+# These files are used for local overrides of Terraform configurations
+# and should not be committed to the repository.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI configuration files
+# These files can contain sensitive credentials, tokens, or local CLI settings.
+.terraformrc
+terraform.rc
+
+# Terraform Provider Lock File
+# The .terraform.lock.hcl file locks provider versions and ensures that
+# Terraform uses the same provider versions across all environments and team members.
+# It is STRONGLY RECOMMENDED to commit this file to your version control system.
+# If you have a very specific reason to ignore it (not standard practice), uncomment the line below.
+# .terraform.lock.hcl
+
+# Terragrunt specific files (if you use Terragrunt)
+.terragrunt-cache/
+# terragrunt.hcl.lock (similar to .terraform.lock.hcl, usually committed)
+
+# Infracost (Cloud cost estimation tool for Terraform)
+.infracost/
+*.infracost.terraform.json
+infracost-reports.outputs/
+
+# Other common files to ignore in Terraform projects
+# Add any other tool-specific or environment-specific files here.
+# For example, if you use tfenv:
+# .terraform-version
+# .tfenv-version
